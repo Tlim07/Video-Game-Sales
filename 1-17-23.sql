@@ -20,83 +20,83 @@ FROM
     
 #Check for any NULL values
 SELECT
-	Name,
+    Name,
     Year,
     Genre,
     Publisher,
-	NA_Sales,
+    NA_Sales,
     EU_Sales,
     JP_Sales
 FROM
 	vgsalesglobale
 WHERE
-	NA_Sales IS NULL OR EU_Sales IS NULL OR JP_Sales IS NULL
+    NA_Sales IS NULL OR EU_Sales IS NULL OR JP_Sales IS NULL
     OR Name IS NULL OR Genre IS NULL OR Publisher IS NULL;
 
 #Data Exploration
 #Top selling game in each country
 SELECT
-	Name,
+    Name,
     NA_Sales
 FROM
-	vgsalesglobale
+    vgsalesglobale
 ORDER BY NA_Sales DESC
 LIMIT 1;
 
 SELECT
-	Name,
+    Name,
     EU_Sales
 FROM
-	vgsalesglobale
+    vgsalesglobale
 ORDER BY EU_Sales DESC
 LIMIT 1;
 
 SELECT
-	Name, 
+    Name, 
     JP_Sales
 FROM
-	vgsalesglobale
+    vgsalesglobale
 ORDER BY JP_Sales DESC
 LIMIT 1;
 
 #Total sales for each country by year
 SELECT
-	Year,
+    Year,
     SUM(NA_Sales)
 FROM
-	vgsalesglobale
+    vgsalesglobale
 GROUP BY
-	Year
+    Year
 ORDER BY 
-	Year DESC;
+    Year DESC;
 
 SELECT
-	Year,
+    Year,
     SUM(EU_Sales)
 FROM
-	vgsalesglobale
+    vgsalesglobale
 GROUP BY
-	Year
+    Year
 ORDER BY 
-	Year DESC;
+    Year DESC;
 
 SELECT
-	Year,
+    Year,
     SUM(JP_Sales)
 FROM
-	vgsalesglobale
+    vgsalesglobale
 GROUP BY
-	Year
+    Year
 ORDER BY
-	Year DESC;
+    Year DESC;
 
 SELECT
-	Name,
+    Name,
     NA_Sales,
     EU_Sales,
     JP_Sales
 FROM
-	vgsalesglobale;
+    vgsalesglobale;
 
 #Finding game sales that were before the year 2000 and after 2017
 SELECT 
@@ -107,15 +107,15 @@ WHERE
     Year > 2017;
     
 SELECT
-	Year
+    Year
 FROM
-	vgsalesglobale
+    vgsalesglobale
 WHERE
-	Year < 2000;
+    Year < 2000;
 
 #Fetch video game sales between 2000 - 2017. Order by year in descending order
 SELECT
-	name,
+    name,
     Genre,
     Publisher,
     Year,
@@ -123,15 +123,15 @@ SELECT
     EU_Sales,
     JP_Sales
 FROM
-	vgsalesglobale
+    vgsalesglobale
 WHERE
-	Year between 2000 and 2017
+    Year between 2000 and 2017
 ORDER BY
-	Year DESC;
+    Year DESC;
 
 #Fetch NA, EU, and JP sales that are >= .5. Order by Genre (Ascending) to see how many rows are extracted.
 SELECT
-	Name AS Game,
+    Name AS Game,
     Year,
     Genre,
     Publisher,
@@ -141,5 +141,5 @@ SELECT
 FROM
     vgsalesglobale
 WHERE 
-	NA_Sales >= .5 AND EU_Sales >= .5 AND JP_Sales >= .5
+    NA_Sales >= .5 AND EU_Sales >= .5 AND JP_Sales >= .5
 ORDER BY Genre ASC;
