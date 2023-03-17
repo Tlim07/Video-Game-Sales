@@ -1,4 +1,4 @@
-#Which genre sold the most games between 2000 - 2017 in each country?
+#Which genre sold the most games 2000s in each country?
 #Game sales must be .5 or more in each country
 
 use video_game_sales;
