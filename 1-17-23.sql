@@ -129,6 +129,19 @@ WHERE
 ORDER BY
     Year DESC;
 
+#Show country total sales in each genre
+SELECT
+    Genre,
+    ROUND(SUM(NA_Sales), 2) AS 'SUM_NA_Sales',
+    ROUND(SUM(EU_Sales), 2) AS 'SUM_EU_Sales',
+    ROUND(SUM(JP_Sales), 2) AS 'SUM_JP_Sales'
+FROM
+    vgsalesglobale
+GROUP BY
+    Genre
+ORDER BY
+    Genre;
+
 #Fetch NA, EU, and JP sales that are >= .5. Order by Genre (Ascending) to see how many rows are extracted.
 SELECT
     Name AS Game,
@@ -141,5 +154,5 @@ SELECT
 FROM
     vgsalesglobale
 WHERE 
-    NA_Sales >= .5 AND EU_Sales >= .5 AND JP_Sales >= .5
-ORDER BY Genre ASC;
+    NA_Sales >= .5 AND EU_Sales >= .5 AND JP_Sales >= .5 AND Year => 2000
+ORDER BY Year ASC;
